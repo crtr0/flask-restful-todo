@@ -1,0 +1,4 @@
+Flask==0.10.1
+Flask-RESTful==0.2.12
+twilio==3.6.10
+plyvel==0.9
