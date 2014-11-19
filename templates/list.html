@@ -8,12 +8,12 @@
       <h1>List of Things for Carter To Do in Seattle</h1>
       <div class="jumbotron">
         <h3>Please help Carter enjoy the Holidays in Seattle.</h3> 
-        <h3>Text a suggestion to XXX-XXX-XXXX.</h3>
+        <h3>Text a suggestion to (206) 981-3338.</h3>
       </div>
       <table class="table table-striped">
       <tr><th>Things to Do</th></tr>
-      {% for task in todos %}
-      <tr><td>{{ task.task }}!</td></tr>
+      {% for todo in todos %}
+      <tr><td>{{ todo.todo }}!</td></tr>
       {% endfor %}
       </table>
     </div>
