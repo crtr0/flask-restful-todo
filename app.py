@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask.ext.restful import Resource, reqparse, abort, Api
 from twilio import twiml
 import plyvel
@@ -23,6 +23,14 @@ def sms():
     response = twiml.Response()
     response.message("Todo added: "+ request.form['Body'])
     return str(response)
+
+# Define 
+@app.route('/', methods=['GET'])
+def list():
+    todos = []
+    for k, v in db.iterator():
+        todos.append(json.loads(v))
+    return render_template('list.html', todos=todos)
 
 # request parsing for Flask Restful
 parser = reqparse.RequestParser()
@@ -69,13 +77,13 @@ class TodoList(Resource):
         todo_id = uuid.uuid1()
         todo = {'id': str(todo_id), 'task': args['task']}
         db.put(str(todo_id), json.dumps(todo))
+        emit('new task', todo, broadcast=True)
         return todo, 201
 
 
 # Setup the Api resource routing 
 api.add_resource(TodoList, '/todos')
 api.add_resource(Todo, '/todos/<string:todo_id>')
-
 
 # Initialize and start the web application
 if __name__ == "__main__":

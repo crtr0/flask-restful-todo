@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <h1>List of Things for Carter To Do in Seattle</h1>
+      <div class="jumbotron">
+        <h3>Please help Carter enjoy the Holidays in Seattle.</h3> 
+        <h3>Text a suggestion to XXX-XXX-XXXX.</h3>
+      </div>
+      <table class="table table-striped">
+      <tr><th>Things to Do</th></tr>
+      {% for task in todos %}
+      <tr><td>{{ task.task }}!</td></tr>
+      {% endfor %}
+      </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
