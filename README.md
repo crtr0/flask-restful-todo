@@ -30,7 +30,7 @@ Now that the server is running, test it out:
 
 Will return an empty array: []
 
-`curl -X POST http://localhost:5000/todos -d "task=do dishes"`
+`curl -X POST http://localhost:5000/todos -d "todo=do dishes"`
 
 Will return a new task object that looks like:
 
@@ -48,7 +48,7 @@ Will return the task object with that id:
 
 {"task": "do dishes", "id": "xxxxx"}
 
-`curl http://localhost:5000/todos/xxxxx -X PUT -d 'task=wash the dishes'`
+`curl http://localhost:5000/todos/xxxxx -X PUT -d 'todo=wash the dishes'`
 
 Will return the modified object:
 
